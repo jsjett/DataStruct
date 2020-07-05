@@ -44,7 +44,28 @@ package com.leetcode;
  */
 public class RotateImage {
     public void rotate(int[][] matrix) {
+        int row = matrix.length;
+        int col = matrix[0].length;
 
+        // 首先将矩阵对折
+
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col / 2; j++) {
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[i][col - j - 1];
+                matrix[i][col - j - 1] = temp;
+            }
+        }
+
+        //对角线折叠
+
+        for (int i = 0; i < row; i++) {
+           for (int j = col - 1 - i; j >= 0; j--) {
+                int temp = matrix[col - j - 1][row - i - 1];
+                matrix[col - j - 1][row - i - 1] = matrix[i][j];
+                matrix[i][j] = temp;
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -53,8 +74,8 @@ public class RotateImage {
 
         rotateImage.rotate(nums);
 
-        for (int i = 0; i< nums.length; i++) {
-            for (int j = 0; j< nums[i].length; j++) {
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = 0; j < nums[i].length; j++) {
                 System.out.print(nums[i][j]);
                 System.out.print(',');
             }
