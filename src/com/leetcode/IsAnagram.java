@@ -20,7 +20,7 @@ package com.leetcode;
 public class IsAnagram {
     public static void main(String[] args) {
         IsAnagram isAnagram = new IsAnagram();
-        boolean is = isAnagram.isAnagram("ac", "ab");
+        boolean is = isAnagram.isAnagram("aacc", "accc");
         System.out.println(is);
     }
 //    public boolean isAnagram(String s, String t) {
